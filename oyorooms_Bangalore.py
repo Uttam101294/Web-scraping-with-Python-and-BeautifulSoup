@@ -1,7 +1,7 @@
 import bs4
 import requests
 import csv
-file=open("oyo.csv",'a+',newline="", encoding="utf-8")
+file=open("oyoBangalore.csv",'a+',newline="", encoding="utf-8")
 writer=csv.writer(file)
 writer.writerow(['Venue_Name', 'Address', 'Format', 'Price'])
 v=input("Enter city name :")
@@ -13,7 +13,6 @@ for i in range(32):
 	url=url2+str(j)
 	data=requests.get(url)
 	soup=bs4.BeautifulSoup(data.text,"html.parser")
-	file=open("oyoBangalore.csv",'a+',newline="", encoding="utf-8")
 	for div in soup.find_all('div',class_='hotelCardListing__descriptionWrapper'):
 		try:
 			venue_format = div.find('div',class_="amenityWrapper").text.strip()
